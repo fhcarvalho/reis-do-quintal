@@ -38,7 +38,11 @@
             justify-content: center;
             min-height: 100vh;
             padding: 10px;
-            overflow: hidden;
+            
+            /* --- ALTERAÇÃO DE SCROLL --- */
+            overflow-y: auto;   /* Permite rolar verticalmente se a tela for pequena */
+            overflow-x: hidden; /* Esconde rolagem horizontal (por causa das nuvens) */
+            
             position: relative;
         }
 
@@ -185,6 +189,10 @@
             gap: 20px;
             position: relative;
             z-index: 5;
+            
+            /* Garante margem para não colar nas bordas ao rolar */
+            margin-top: 20px; 
+            margin-bottom: 20px;
         }
 
         #intro-screen h1 { 
@@ -195,17 +203,15 @@
             font-weight: 700;
             text-transform: uppercase;
             
-            /* --- NOVO: Alinhamento do título com ícones --- */
             display: flex;
-            align-items: center; /* Centraliza verticalmente */
-            justify-content: center; /* Centraliza horizontalmente */
-            gap: 15px; /* Espaço entre ícones e texto */
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
         }
         
-        /* --- NOVO: Estilo para os ícones do título --- */
         .title-icon {
-            height: 1em; /* A altura será igual ao tamanho da fonte do h1 */
-            width: auto; /* Mantém a proporção */
+            height: 1em;
+            width: auto;
             display: block;
         }
         
@@ -256,6 +262,7 @@
             perspective: 1000px;
             position: relative;
             z-index: 5;
+            margin-bottom: 20px; /* Margem extra no final para scroll */
         }
 
         .card {
@@ -313,6 +320,9 @@
             z-index: 100;
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
+            
+            /* Permite scroll dentro do modal se a tela for muito pequena */
+            overflow-y: auto; 
         }
         
         .modal-content h2 { 
@@ -342,11 +352,10 @@
         }
 
         @media (max-width: 720px) {
-             /* Ajuste para telas menores: permite que o título quebre linha se necessário */
              #intro-screen h1 { 
                  white-space: normal; 
                  font-size: 2.5rem; 
-                 flex-wrap: wrap; /* Ícones e texto podem ir para linhas diferentes se apertar muito */
+                 flex-wrap: wrap; 
              }
              .sun { width: 80px; height: 80px; top: 20px; right: 20px; }
              
